@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//w3c//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+	<title>Musician list</title>
+</head>
+<body>
+	<table>
+		<tr><th>Musician</th><th>Genre</th></tr>
+	{%for musician in musicians %}
+		<tr>
+			<td{% if musician.is_important %} style="font-weight:bold;"{% endif %}>
+				{{musician.name}}{% if musician.is_pretentious %}*{% endif %}</td>
+
+			<td>{{musician.genre}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+	{% if has_pretentious %}* Pretentious{% endif %}
+</body>
+</html>

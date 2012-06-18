@@ -1,0 +1,14 @@
+<!DOCTYPE HEML PUBLIC "-//w3c//DTD HTM 4.01//EN">
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="default.css" type="text/css">
+	<title>{% block title %}{% endblock %}</title>
+	{% block extrahead %}{% endblock %}
+</head>
+<body>
+	<h1>{% block headline %}{% endblock %}</h1>
+	{% block content %}{% endblock %}
+	<hr>
+	<p><a href="#top">Back to top</a>.</p>
+</body>
+</html>
