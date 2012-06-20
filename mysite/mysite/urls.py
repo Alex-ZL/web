@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
 from view import *
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
 	(r'^now/$', current_datetime),
@@ -8,11 +10,12 @@ urlpatterns = patterns('',
 	(r'^now/(plus|minus)(1)hour/$',hour_offset),
 	(r'^musicians/$',musicians),
 	(r'^to-do-list1/$',todolist1),
+    (r'^admin/', include(admin.site.urls)),
 )
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+#from django.contrib import admin
+#admin.autodiscover()
 
 #urlpatterns = patterns('',
     # Examples:

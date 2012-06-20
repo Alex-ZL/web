@@ -4,7 +4,7 @@
 from django.shortcuts import render_to_response
 from django.template import Context
 from django.http import HttpResponse
-from MySQLdb
+import MySQLdb
 import datetime
 
 def book_list(request):
