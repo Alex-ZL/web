@@ -1,4 +1,3 @@
-#!/usr/bin/python
 ## test view in reading django book
 #from django.template.loader import get_template
 from django.shortcuts import render_to_response
@@ -6,6 +5,18 @@ from django.template import Context
 from django.http import HttpResponse
 import MySQLdb
 import datetime
+
+
+def display_meta(request):
+	values = request.META.items()
+	values.sort()
+	html = []
+	for k, v in values:
+		html.append('<tr><td>%s</td><td>%s</td></tr>' %(k,v))
+	return HttpResponse('<table>%s</table>' % '\n'.join(html))
+
+def show_request_attribute(request):
+	return HttpResponse("Welcome to the page at %s, host:%s, full path:%s, via Https: %s " %(request.path, request.get_host(), request.get_full_path(), request.is_secure()))
 
 def book_list(request):
 	db = MySQLdb.connect(user='me', db='mydb',passwd='secret',host='localhost')

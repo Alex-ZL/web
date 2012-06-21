@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from view import *
+from books import views
 from django.contrib import admin
 admin.autodiscover()
 
@@ -11,6 +12,9 @@ urlpatterns = patterns('',
 	(r'^musicians/$',musicians),
 	(r'^to-do-list1/$',todolist1),
     (r'^admin/', include(admin.site.urls)),
+	(r'^show/', show_request_attribute),
+	(r'^display/',display_meta),
+	(r'^search-form/$', views.search_form),
 )
 
 # Uncomment the next two lines to enable the admin:
