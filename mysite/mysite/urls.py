@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from view import *
 from books import views
+from contact import views as Cviews
 from django.contrib import admin
 admin.autodiscover()
 
@@ -15,6 +16,8 @@ urlpatterns = patterns('',
 	(r'^show/', show_request_attribute),
 	(r'^display/',display_meta),
 	(r'^search-form/$', views.search_form),
+	(r'^search/$', views.search),
+	(r'^contact-form/$', Cviews.contact),
 )
 
 # Uncomment the next two lines to enable the admin:
