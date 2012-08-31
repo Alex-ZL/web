@@ -1,9 +1,18 @@
 from django.conf.urls import patterns, include, url
+from django.conf.urls.defaults import *
+from myapp.api import EntryResource, UserResource
 from view import *
 from books import views
 from contact import views as Cviews
 from django.contrib import admin
-admin.autodiscover()
+from tastypie.api import Api
+from dnsms.api import ArecordResource
+
+
+v1_api = Api(api_name='v1')
+v1_api.register(UserResource())
+v1_api.register(EntryResource())
+v1_api.register(ArecordResource())
 
 urlpatterns = patterns('',
 	(r'^now/$', current_datetime),
@@ -18,6 +27,8 @@ urlpatterns = patterns('',
 	(r'^search-form/$', views.search_form),
 	(r'^search/$', views.search),
 	(r'^contact-form/$', Cviews.contact),
+	#(r'^blog/', include(myapp.urls)),
+	(r'^api/', include(v1_api.urls)),
 )
 
 # Uncomment the next two lines to enable the admin:

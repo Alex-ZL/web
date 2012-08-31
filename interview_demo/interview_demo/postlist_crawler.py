@@ -1,4 +1,4 @@
-#!usr/bin/evn python
+#!usr/bin/env python
 #coding = utf-8
 import urllib2
 from bs4 import BeautifulSoup
@@ -31,6 +31,8 @@ class Crawler(Thread):
 			cur_postlist = self.get_postlist(soup)
 
 			temp_dict[cur_board] = cur_postlist
+			#temp_list.append(cur_postlist)
+
 			self.post_queue.put(temp_dict)
 			
 			print 'Crawler' + self.name + 'finish the board: ' + cur_board
@@ -90,10 +92,14 @@ class Crawler(Thread):
 
 					#print record[4].#contents[0].contents
 					dict_record['date'] = self.date_format_convert(record[4].contents[0].contents[0])
+					
 					#print record[4].contents[0].contents[1].contents[0].contents[0]
-
 					dict_record['title'] = record[4].contents[0].contents[1].contents[0].contents[0]
+
+					#print record[4].contents[0].contents[2].contents[0].contents[0]
 					dict_record['replyCount'] = record[4].contents[0].contents[2].contents[0].contents[0]
+
+					dict_record['viewCount'] = 'N/A'
 	
 				postlist.append(dict_record)
 		return postlist
@@ -128,7 +134,12 @@ if __name__ == "__main__":
 
 	import json
 	boardlist = ['pictures', 'girls', 'Chat']
+	#boardlist = ['pictures']
 	result = get_result(boardlist,2)
+	result = result.items()
+	print type(result)
 	print len(result)
-	data = json.dumps(result)
-	print data.decode('unicode_escape')
+	#print result
+	#data = json.dumps(result)
+	#print type(data)
+	#print data.decode('unicode_escape')

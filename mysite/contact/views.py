@@ -12,7 +12,7 @@ def contact(request):
 					cd['subject'],
 					cd['message'],
 					cd.get('email', 'noreplay@example.com'),
-					['siteowner@example.com'],
+					['yesterdayzhang@gmail.com'],
 					)
 			return HttpResponseRedirect('/contact/thanks/')
 	else:

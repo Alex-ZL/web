@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} Post lists {% endblock %}
+
+{% block content %}
+{%for board in board_posts %}
+{% block headline %} {{ board }}  {% endblock %}
+
+{% block content %}
+{{ board }}
+{% endblock %}
+{% endfor %}
+{% endblock %}
